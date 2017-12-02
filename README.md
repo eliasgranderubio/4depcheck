@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/eliasgranderubio/4depcheck.svg?branch=master)](https://travis-ci.org/eliasgranderubio/4depcheck)
 [![Coverage Status](https://coveralls.io/repos/github/eliasgranderubio/4depcheck/badge.svg?branch=master)](https://coveralls.io/github/eliasgranderubio/4depcheck?branch=master)
 [![Python](https://img.shields.io/badge/python-3.3%2C%203.4%2C%203.5%2C%203.6-blue.svg)](https://github.com/eliasgranderubio/4depcheck)
+[![Docker Pulls](https://img.shields.io/docker/pulls/3grander/4depcheck.svg)](https://hub.docker.com/r/3grander/4depcheck/)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/eliasgranderubio/4depcheck)
 
 **4depcheck** is a tool to analyze and detect vulnerable dependencies/libraries from different programming languages inside the docker images/containers thanks to:
