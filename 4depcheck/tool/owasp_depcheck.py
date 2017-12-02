@@ -54,6 +54,11 @@ def _read_report():
         raw_json = json.loads(''.join(report_file.readlines()))
 
     # Parse json
+    return _generate_report(raw_json)
+
+
+# Prepare output
+def _generate_report(raw_json):
     output = []
     if 'dependencies' in raw_json:
         for dependency in raw_json['dependencies']:

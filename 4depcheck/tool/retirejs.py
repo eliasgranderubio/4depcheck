@@ -24,19 +24,11 @@ import subprocess
 # Run Retire.js
 def run_retirejs(path):
     # Run retire.js for Javascript libraries
-    js_raw_json_output = json.loads(subprocess.check_output(["retire", "--exitwith", "0",
-                                                             "--outputformat", "json",
-                                                             "--path", path,
-                                                             "-j"],
-                                                            stderr=subprocess.STDOUT).decode("utf-8"))
+    js_raw_json_output = json.loads(_execute_retirejs(path, "-j"))
     js_vuln_report = _generate_report(js_raw_json_output, "js")
 
     # Run retire.js for Node.js libraries
-    nodejs_raw_json_output = json.loads(subprocess.check_output(["retire", "--exitwith", "0",
-                                                                 "--outputformat", "json",
-                                                                 "--path", path,
-                                                                 "-n"],
-                                                                stderr=subprocess.STDOUT).decode("utf-8"))
+    nodejs_raw_json_output = json.loads(_execute_retirejs(path, "-n"))
     nodejs_vuln_report = _generate_report(nodejs_raw_json_output, "nodejs")
 
     # Return
@@ -44,6 +36,15 @@ def run_retirejs(path):
 
 
 # -- Private methods
+
+# Execute subprocess with retirejs
+def _execute_retirejs(path, type):
+    return subprocess.check_output(["retire", "--exitwith", "0",
+                                              "--outputformat", "json",
+                                              "--path", path,
+                                              type],
+                                              stderr=subprocess.STDOUT).decode("utf-8")
+
 
 # Prepare output
 def _generate_report(raw_json, type):
