@@ -34,7 +34,7 @@ class DepCheckCLIParser:
                                  help='Project name for this analysis')
         self.parser.add_argument('dir', metavar='PATH_TO_SCAN', type=str, help='The path to scan')
         self.parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.1.0')
-        self.args, self.unknown = self.parser.parse_known_args(sys.argv)
+        self.args, self.unknown = self.parser.parse_known_args(sys.argv[1:])
         # Verify command line arguments
         status = self.verify_args(self.args)
         if status != 0:

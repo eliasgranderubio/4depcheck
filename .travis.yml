@@ -1,0 +1,20 @@
+sudo: required
+language: python
+python:
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+services:
+  - docker
+before_script:
+  - pip install python-coveralls
+script:
+  - make test
+after_success:
+  - coveralls
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker build --tag "$DOCKER_USERNAME"/4depcheck:0.1.0 .;
+      docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+      docker push "$DOCKER_USERNAME"/4depcheck:0.1.0;
+fi
