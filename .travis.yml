@@ -17,4 +17,4 @@ after_success:
       docker build --tag "$DOCKER_USERNAME"/4depcheck:0.1.0 .;
       docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
       docker push "$DOCKER_USERNAME"/4depcheck:0.1.0;
-fi
+    fi
