@@ -19,6 +19,7 @@
 
 import json
 import unittest
+from unittest.mock import patch
 
 from tool.open_source.retirejs import RetireJS
 
@@ -30,6 +31,9 @@ class RetireJSTestSuite(unittest.TestCase):
     def test_generate_report(self):
         self.assertEqual(RetireJS('')._generate_report(json.loads(mock_retirejs_output), 'js'), json.loads(mock_generated_report))
 
+    @patch('subprocess.check_output', return_value='[]'.encode('utf-8'))
+    def test_run_retirejs(self, m1):
+        self.assertEqual(RetireJS('').run_retirejs(),[])
 
 # -- Mock Constants
 

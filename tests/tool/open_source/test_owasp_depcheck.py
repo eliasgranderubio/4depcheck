@@ -18,7 +18,9 @@
 #
 
 import json
+import os
 import unittest
+import shutil
 
 from tool.open_source.owasp_depcheck import OwaspDepCheck
 
@@ -46,9 +48,9 @@ class OwaspDepCheckTestSuite(unittest.TestCase):
         self.assertEqual(OwaspDepCheck('')._get_type('dependency.exe'), 'unknown')
 
     def test_generate_report(self):
-        with open('./tests/mock_files/dependency-check-report.json', 'r') as report_file:
-            raw_json = json.loads(''.join(report_file.readlines()))
-        self.assertEqual(OwaspDepCheck('')._generate_report(raw_json), json.loads(mock_owasp_dep_check_generated_repo))
+        shutil.copyfile('./tests/mock_files/dependency-check-report.json', '/tmp/dependency-check-report.json')
+        self.assertEqual(OwaspDepCheck('')._read_report(), json.loads(mock_owasp_dep_check_generated_repo))
+        os.remove('/tmp/dependency-check-report.json')
 
 
 # -- Mock Constants

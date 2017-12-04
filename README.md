@@ -10,10 +10,76 @@
    * [Retire.js](https://github.com/retirejs/retire.js/)
 
 
-Alpha version! Still WIP.
+## Requirements
 
+Before **4depcheck** usage, you must have installed the next requirements:
 
-Better documentation soon :)
+* Docker
+
+### Installation of Docker
+
+You must have installed Docker for using **4depcheck**. If you need instructions for Docker installation, see the [How-to install Docker](https://docs.docker.com/engine/getstarted/step_one/) page.
+
+In order to avoid having to use `sudo` when you use the `docker` command, create a Unix group called `docker` and add users to it. When the `docker` daemon starts, it makes the ownership of the Unix socket read/writable by the `docker` group.
+
+## Usage
+
+For **4depcheck** usage, you can set the next environment variables as you need:
+```
+    export PROJECT_NAME='project_to_analyze'
+    export ABSOLUTE_PATH_TO_YOUR_PROJECT='/home/user/project_to_analyze'
+```
+
+If you has set the previous environment variables, you only need run the next docker command:
+```
+    $ docker run -v /tmp/4depcheck:/tmp/4depcheck 
+                 -v $ABSOLUTE_PATH_TO_YOUR_PROJECT:$ABSOLUTE_PATH_TO_YOUR_PROJECT 
+                 3grander/4depcheck:0.1.0 $PROJECT_NAME $ABSOLUTE_PATH_TO_YOUR_PROJECT
+```
+If you has not set the environment variables, you only need replace the variables in the previous docker command as you need.
+
+The expected output for the previous query will be shown in the stdout and it will be stored in `/tmp/4depcheck/$PROJECT_NAME.json`. An example for this output is shown below:
+
+```
+    [{
+        "cve_severity": "medium",
+        "cve_product": "batik",
+        "cve_product_version": "1.7",
+        "cve_id": "CVE-2015-0250",
+        "cve_type": "java"
+    }, {
+        "cve_severity": "high",
+        "cve_product": "batik",
+        "cve_product_version": "1.7",
+        "cve_id": "CVE-2017-5662",
+        "cve_type": "java"
+    }, {
+        "cve_severity": "medium",
+        "cve_product": "xstream",
+        "cve_product_version": "1.4.8",
+        "cve_id": "CVE-2016-3674",
+        "cve_type": "java"
+    }, {
+        "cve_severity": "medium",
+        "cve_product": "xstream",
+        "cve_product_version": "1.4.8",
+        "cve_id": "CVE-2017-7957",
+        "cve_type": "java"
+    }, {
+        "cve_severity": "medium",
+        "cve_product": "axis",
+        "cve_product_version": "1.4",
+        "cve_id": "CVE-2014-3596",
+        "cve_type": "java"
+    }, {
+        "cve_severity": "medium",
+        "cve_product": "jquery",
+        "cve_product_version": "1.4.2",
+        "cve_id": "CVE-2011-4969", 
+        "cve_type": "js"
+    }]
+
+```
 
 
 ## Bugs and Feedback
