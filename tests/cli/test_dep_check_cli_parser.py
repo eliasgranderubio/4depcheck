@@ -34,6 +34,12 @@ class DepCheckCLIParserTestSuite(unittest.TestCase):
         self.assertEqual(parsed_args.get_project_name(), 'jboss_project')
         self.assertEqual(parsed_args.get_dir(), '/tmp')
 
+    def test_check_exit_1(self):
+        sys.argv = ['4depcheck.py', 'jboss_project', '/path/to/dir']
+        with self.assertRaises(SystemExit) as cm:
+            DepCheckCLIParser()
+        self.assertEqual(cm.exception.code, 1)
+
     def test_with_no_dir(self):
         args = generate_args('jboss_project', '/path/to/dir')
         status = DepCheckCLIParser.verify_args(args)
