@@ -17,23 +17,18 @@
 # under the License.
 #
 
-import tempfile
+import json
 
-from cli.dep_check_cli_parser import DepCheckCLIParser
-from tool.orchestrator import run_tools
-
-
-# -- Main function
-def main(parsed_args):
-    # -- Run analysis
-    full_report = run_tools(path_to_analyze=parsed_args.get_dir())
-
-    # -- Print full report (STDOUT and file)
-    print(full_report)
-    with open(tempfile.gettempdir() + "/4depcheck/" +
-              parsed_args.get_project_name().replace(' ', '_') + ".json", "w") as report_file:
-        report_file.write(full_report)
+from tool.open_source.owasp_depcheck import OwaspDepCheck
+from tool.open_source.retirejs import RetireJS
 
 
-if __name__ == "__main__":
-    main(DepCheckCLIParser())
+# Run all tools
+def run_tools(path_to_analyze):
+    # -- Run all analysis
+    retirejs_report = RetireJS(path=path_to_analyze).run_retirejs()
+    owasp_depcheck_report = OwaspDepCheck(path=path_to_analyze).run_owasp_depcheck()
+
+    # -- Generate full report and return
+    full_report = json.dumps(retirejs_report + owasp_depcheck_report)
+    return full_report

@@ -17,10 +17,10 @@
 # under the License.
 #
 
-import unittest
 import json
-from tool.owasp_depcheck import _get_type
-from tool.owasp_depcheck import _generate_report
+import unittest
+
+from tool.open_source.owasp_depcheck import OwaspDepCheck
 
 
 # -- Test suite
@@ -28,27 +28,27 @@ from tool.owasp_depcheck import _generate_report
 class OwaspDepCheckTestSuite(unittest.TestCase):
 
     def test_get_type_java(self):
-        self.assertEqual(_get_type('dependency.jar'), 'java')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.jar'), 'java')
 
     def test_get_type_js(self):
-        self.assertEqual(_get_type('dependency.js'), 'js')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.js'), 'js')
 
     def test_get_type_python(self):
-        self.assertEqual(_get_type('dependency.py'), 'python')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.py'), 'python')
 
     def test_get_type_ruby(self):
-        self.assertEqual(_get_type('dependency.rb'), 'ruby')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.rb'), 'ruby')
 
     def test_get_type_php(self):
-        self.assertEqual(_get_type('dependency.php'), 'php')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.php'), 'php')
 
     def test_get_type_unknown(self):
-        self.assertEqual(_get_type('dependency.exe'), 'unknown')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.exe'), 'unknown')
 
     def test_generate_report(self):
         with open('./tests/mock_files/dependency-check-report.json', 'r') as report_file:
             raw_json = json.loads(''.join(report_file.readlines()))
-        self.assertEqual(_generate_report(raw_json), json.loads(mock_owasp_dep_check_generated_repo))
+        self.assertEqual(OwaspDepCheck('')._generate_report(raw_json), json.loads(mock_owasp_dep_check_generated_repo))
 
 
 # -- Mock Constants

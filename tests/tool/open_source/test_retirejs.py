@@ -17,9 +17,10 @@
 # under the License.
 #
 
-import unittest
 import json
-from tool.retirejs import _generate_report
+import unittest
+
+from tool.open_source.retirejs import RetireJS
 
 
 # -- Test suite
@@ -27,7 +28,7 @@ from tool.retirejs import _generate_report
 class RetireJSTestSuite(unittest.TestCase):
 
     def test_generate_report(self):
-        self.assertEqual(_generate_report(json.loads(mock_retirejs_output), 'js'), json.loads(mock_generated_report))
+        self.assertEqual(RetireJS('')._generate_report(json.loads(mock_retirejs_output), 'js'), json.loads(mock_generated_report))
 
 
 # -- Mock Constants
