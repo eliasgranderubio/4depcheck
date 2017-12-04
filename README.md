@@ -5,7 +5,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/3grander/4depcheck.svg)](https://hub.docker.com/r/3grander/4depcheck/)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/eliasgranderubio/4depcheck)
 
-**4depcheck** is a tool to analyze and detect vulnerable dependencies/libraries from different programming languages inside the docker images/containers thanks to:
+**4depcheck** is a tool to analyze and detect vulnerable dependencies/libraries from different programming languages thanks to:
    * [OWASP dependency check](https://github.com/jeremylong/DependencyCheck)
    * [Retire.js](https://github.com/retirejs/retire.js/)
 
