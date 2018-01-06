@@ -57,6 +57,7 @@ class RetireJS:
         output = []
         for vul_product in raw_json:
             if vul_product["results"] is not None:
+                file_path = vul_product["file"]
                 for result in vul_product["results"]:
                     product = result["component"]
                     version = result["version"]
@@ -71,6 +72,7 @@ class RetireJS:
                                     o["cve_severity"] = severity
                                     o["cve_product"] = product
                                     o["cve_product_version"] = version
+                                    o["cve_product_file_path"] = file_path
                                     output.append(o)
                         except KeyError:
                             pass

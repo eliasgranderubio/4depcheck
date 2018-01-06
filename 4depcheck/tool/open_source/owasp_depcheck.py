@@ -83,6 +83,7 @@ class OwaspDepCheck:
                                         d["cve_severity"] = vulnerability['severity'].lower()
                                         d["cve_product"] = splitted_package[3]
                                         d["cve_product_version"] = splitted_package[4]
+                                        d["cve_product_file_path"] = dependency["filePath"]
                                         output.append(d)
         return output
 
