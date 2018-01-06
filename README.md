@@ -85,3 +85,7 @@ The expected output for the previous query will be shown in the stdout and it wi
 
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/eliasgranderubio/4depcheck/issues) or ping me on Twitter (@3grander).
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Feliasgranderubio%2F4depcheck.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Feliasgranderubio%2F4depcheck?ref=badge_large)
