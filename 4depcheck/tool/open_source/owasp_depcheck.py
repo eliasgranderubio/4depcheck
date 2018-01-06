@@ -79,7 +79,8 @@ class OwaspDepCheck:
                                     if len(splitted_package) > 4:
                                         d = {}
                                         d["cve_id"] = vulnerability['name']
-                                        d["cve_type"] = OwaspDepCheck._get_type(dependency['fileName'])
+                                        d["cve_type"] = OwaspDepCheck._get_type(dependency['fileName'],
+                                                                                dependency["filePath"])
                                         d["cve_severity"] = vulnerability['severity'].lower()
                                         d["cve_product"] = splitted_package[3]
                                         d["cve_product_version"] = splitted_package[4]
@@ -89,10 +90,11 @@ class OwaspDepCheck:
 
     # Get type based on filename
     @staticmethod
-    def _get_type(filename):
-        if filename.endswith('.jar') or filename.endswith('.war'):
+    def _get_type(filename, filepath):
+        if filename.endswith('.jar') or filename.endswith('.war') or filepath.endswith('pom.xml'):
             return 'java'
-        elif filename.endswith('.py') or filename.endswith('.whl') or filename.endswith('.egg'):
+        elif filename.endswith('.py') or filename.endswith('.whl') or filename.endswith('.egg') or '.egg' in filepath \
+                or filepath.endswith('.whl'):
             return 'python'
         elif filename.endswith('.js'):
             return 'js'

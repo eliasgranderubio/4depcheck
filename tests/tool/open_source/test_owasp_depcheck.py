@@ -30,22 +30,22 @@ from tool.open_source.owasp_depcheck import OwaspDepCheck
 class OwaspDepCheckTestSuite(unittest.TestCase):
 
     def test_get_type_java(self):
-        self.assertEqual(OwaspDepCheck('')._get_type('dependency.jar'), 'java')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.jar', '/home/user/dependency.jar'), 'java')
 
     def test_get_type_js(self):
-        self.assertEqual(OwaspDepCheck('')._get_type('dependency.js'), 'js')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.js', '/home/user/dependency.js'), 'js')
 
     def test_get_type_python(self):
-        self.assertEqual(OwaspDepCheck('')._get_type('dependency.py'), 'python')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.py', '/home/user/dependency.py'), 'python')
 
     def test_get_type_ruby(self):
-        self.assertEqual(OwaspDepCheck('')._get_type('dependency.rb'), 'ruby')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.rb', '/home/user/dependency.rb'), 'ruby')
 
     def test_get_type_php(self):
-        self.assertEqual(OwaspDepCheck('')._get_type('dependency.php'), 'php')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.php', '/home/user/dependency.php'), 'php')
 
     def test_get_type_unknown(self):
-        self.assertEqual(OwaspDepCheck('')._get_type('dependency.exe'), 'unknown')
+        self.assertEqual(OwaspDepCheck('')._get_type('dependency.exe', '/home/user/dependency.exe'), 'unknown')
 
     def test_generate_report(self):
         shutil.copyfile('./tests/mock_files/dependency-check-report.json', '/tmp/dependency-check-report.json')
