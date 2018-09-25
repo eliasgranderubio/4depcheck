@@ -57,7 +57,12 @@ class RetireJS:
         output = []
         for vul_product in raw_json:
             if vul_product["results"] is not None:
-                file_path = vul_product["file"]
+                
+                if vul_product["file"] is not None:
+                    file_path = vul_product["file"]
+                else:
+                    file_path = 'N/A'
+                
                 for result in vul_product["results"]:
                     product = result["component"]
                     version = result["version"]
