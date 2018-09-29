@@ -30,5 +30,17 @@ def run_tools(path_to_analyze):
     owasp_depcheck_report = OwaspDepCheck(path=path_to_analyze).run_owasp_depcheck()
 
     # -- Generate full report and return
-    full_report = json.dumps(retirejs_report + owasp_depcheck_report)
+    full_report = json.dumps(_avoid_repetition(retirejs_report + owasp_depcheck_report))
     return full_report
+
+
+# Avoid item repetition
+def _avoid_repetition(input_list_with_repetition):
+    keys = set()
+    output = []
+    for item in input_list_with_repetition:
+        key = item["cve_product"] + item["cve_product_version"]
+        if key not in keys:
+            keys.add(key)
+            output.append(item)
+    return output
