@@ -39,7 +39,7 @@ def _avoid_repetition(input_list_with_repetition):
     keys = set()
     output = []
     for item in input_list_with_repetition:
-        key = item["cve_product"] + item["cve_product_version"]
+        key = item["cve_product"] + item["cve_product_version"] + item["cve_id"]
         if key not in keys:
             keys.add(key)
             output.append(item)
