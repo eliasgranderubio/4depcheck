@@ -55,7 +55,7 @@ class RetireJS:
     @staticmethod
     def _generate_report(raw_json, type):
         output = []
-        for vul_product in raw_json:
+        for vul_product in raw_json['data']:
             if vul_product["results"] is not None and "file" in vul_product and vul_product["file"] is not None:
                 file_path = vul_product["file"]
                 for result in vul_product["results"]:
