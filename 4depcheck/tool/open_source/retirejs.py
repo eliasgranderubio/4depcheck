@@ -55,26 +55,27 @@ class RetireJS:
     @staticmethod
     def _generate_report(raw_json, type):
         output = []
-        for vul_product in raw_json['data']:
-            if vul_product["results"] is not None and "file" in vul_product and vul_product["file"] is not None:
-                file_path = vul_product["file"]
-                for result in vul_product["results"]:
-                    product = result["component"]
-                    version = result["version"]
-                    if "vulnerabilities" in result:
-                        for vulnerability in result["vulnerabilities"]:
-                            severity = vulnerability["severity"]
-                            try:
-                                for cve in vulnerability["identifiers"]["CVE"]:
-                                    if 'CVE-XXXX-XXXX' not in cve:
-                                        o = {}
-                                        o["cve_id"] = cve
-                                        o["cve_type"] = type
-                                        o["cve_severity"] = severity
-                                        o["cve_product"] = product
-                                        o["cve_product_version"] = version
-                                        o["cve_product_file_path"] = file_path
-                                        output.append(o)
-                            except KeyError:
-                                pass
+        if 'data' in raw_json:
+            for vul_product in raw_json['data']:
+                if vul_product["results"] is not None and "file" in vul_product and vul_product["file"] is not None:
+                    file_path = vul_product["file"]
+                    for result in vul_product["results"]:
+                        product = result["component"]
+                        version = result["version"]
+                        if "vulnerabilities" in result:
+                            for vulnerability in result["vulnerabilities"]:
+                                severity = vulnerability["severity"]
+                                try:
+                                    for cve in vulnerability["identifiers"]["CVE"]:
+                                        if 'CVE-XXXX-XXXX' not in cve:
+                                            o = {}
+                                            o["cve_id"] = cve
+                                            o["cve_type"] = type
+                                            o["cve_severity"] = severity
+                                            o["cve_product"] = product
+                                            o["cve_product_version"] = version
+                                            o["cve_product_file_path"] = file_path
+                                            output.append(o)
+                                except KeyError:
+                                    pass
         return output
