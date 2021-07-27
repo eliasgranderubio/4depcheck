@@ -1,10 +1,7 @@
 # 4depcheck
-[![Build Status](https://travis-ci.org/eliasgranderubio/4depcheck.svg?branch=master)](https://travis-ci.org/eliasgranderubio/4depcheck)
-[![Coverage Status](https://coveralls.io/repos/github/eliasgranderubio/4depcheck/badge.svg?branch=master)](https://coveralls.io/github/eliasgranderubio/4depcheck?branch=master)
 [![Python](https://img.shields.io/badge/python-3.5%2C%203.6-blue.svg)](https://github.com/eliasgranderubio/4depcheck)
 [![Docker Pulls](https://img.shields.io/docker/pulls/3grander/4depcheck.svg)](https://hub.docker.com/r/3grander/4depcheck/)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/eliasgranderubio/4depcheck)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Feliasgranderubio%2F4depcheck.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Feliasgranderubio%2F4depcheck?ref=badge_shield)
 
 **4depcheck** is a tool to analyze and detect vulnerable dependencies/libraries from different programming languages thanks to:
    * [OWASP dependency check](https://github.com/jeremylong/DependencyCheck)
@@ -91,7 +88,3 @@ The expected output for the previous query will be shown in the stdout and it wi
 
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/eliasgranderubio/4depcheck/issues) or ping me on Twitter (@3grander).
-
-
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Feliasgranderubio%2F4depcheck.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Feliasgranderubio%2F4depcheck?ref=badge_large)

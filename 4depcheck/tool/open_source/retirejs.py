@@ -34,12 +34,12 @@ class RetireJS:
         js_raw_json_output = json.loads(self._execute_retirejs("-j"))
         js_vuln_report = self._generate_report(js_raw_json_output, "js")
 
-        # Run retire.js for Node.js libraries
-        nodejs_raw_json_output = json.loads(self._execute_retirejs("-n"))
-        nodejs_vuln_report = self._generate_report(nodejs_raw_json_output, "nodejs")
+        # Run npm audit for NPM packages
+        # TODO egrande: Add "npm audit --json --audit-level=none". It will be necessary to update the base image
+        #               in the Dockerfile because, at this moment, the npm version is 3.10.3
 
         # Return
-        return js_vuln_report + nodejs_vuln_report
+        return js_vuln_report
 
     # -- Private methods
 

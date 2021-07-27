@@ -7,7 +7,7 @@ RUN apk update && \
     apk add ruby ruby-rdoc ruby-irb && \
     gem install bundler-audit && \
     apk add openjdk8 wget zip && \
-    wget -O "/tmp/dependency-check.zip" "https://dl.bintray.com/jeremy-long/owasp/dependency-check-5.3.0-release.zip" && \
+    wget -O "/tmp/dependency-check.zip" "https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip" && \
     mkdir -p /opt/dependency-check && \
     unzip -d "/opt" /tmp/dependency-check.zip && \
     rm -rf /tmp/dependency-check.zip
